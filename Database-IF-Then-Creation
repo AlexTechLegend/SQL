@@ -1,0 +1,16 @@
+# Database creation using "if" statement to clear and create new database
+
+if db_id('ClientDB') is not null
+BEGIN
+print 'database ClientDB already exists.  Deleting database.'
+USE master;
+ALTER DATABASE ClientDB
+SET SINGLE_USER
+WITH ROLLBACK IMMEDIATE;
+DROP DATABASE ClientDB;
+END
+
+BEGIN
+print 'Creating database ClientDB'
+CREATE DATABASE ClientDB;
+END
