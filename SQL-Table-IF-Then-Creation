@@ -1,0 +1,24 @@
+# Set variable for the table
+DECLARE @client_A_contacts VARCHAR (30)
+SET @client_A_contacts = 'client_A_contacts'
+
+# Check if table exist, delete it then create a new one
+IF (EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = @client_A_contacts))
+BEGIN
+print 'table ' + @client_A_contacts + ' already exists'
+DROP TABLE dbo.client_A_contacts
+END
+
+BEGIN
+CREATE TABLE client_A_contacts
+(
+first_name varchar(30),
+last_name varchar(30),
+city varchar (30),
+county varchar (30),
+zip varchar (30),
+officePhone varchar (30),
+mobilePhone varchar (30)
+)
+print 'table ' + @client_A_contacts + ' created'
+END
