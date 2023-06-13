@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# MySQL database credentials
+DB_USER="admin"
+DB_PASSWORD="Password"
+DB_NAME="Training"
+
+# SQL command to execute
+SQL_COMMAND="CREATE TABLE Trainers
+(
+first_name varchar(30),
+last_name varchar(30),
+city varchar (30),
+county varchar (30),
+zip varchar (30),
+officePhone varchar (30),
+mobilePhone varchar (30)
+);
+
+CREATE TABLE Trainees
+(
+first_name varchar(30),
+last_name varchar(30),
+city varchar (30),
+county varchar (30),
+zip varchar (30),
+officePhone varchar (30),
+mobilePhone varchar (30)
+);
+
+CREATE TABLE Newbies
+(
+first_name varchar(30),
+last_name varchar(30),
+city varchar (30),
+county varchar (30),
+zip varchar (30),
+officePhone varchar (30),
+mobilePhone varchar (30)
+);"
+
+# Run the SQL command using mysql
+mysql -u "$DB_USER" -p"$DB_PASSWORD" -D "$DB_NAME" -e "$SQL_COMMAND"
