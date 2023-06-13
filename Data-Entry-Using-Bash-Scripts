@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# MySQL database credentials
+DB_USER="admin"
+DB_PASSWORD="Password"
+DB_NAME="Training"
+
+# Define the data for Trainers table
+trainers_data=$(cat <<EOF
+(
+  'John', 'Smith', 'New York', 'Manhattan', '12345', '555-1234', '555-5678'
+),
+(
+  'Sarah', 'Johnson', 'Los Angeles', 'Los Angeles', '98765', '444-5678', '444-9876'
+),
+(
+  'Michael', 'Williams', 'Chicago', 'Cook', '60601', '777-8888', '777-9999'
+);
+EOF
+)
+
+# Define the data for Trainees table
+trainees_data=$(cat <<EOF
+(
+  'Emily', 'Davis', 'San Francisco', 'San Francisco', '94101', '888-1111', '888-2222'
+),
+(
+  'David', 'Brown', 'Houston', 'Harris', '77001', '999-3333', '999-4444'
+),
+(
+  'Jessica', 'Miller', 'Miami', 'Miami-Dade', '33101', '111-5555', '111-6666'
+);
+EOF
+)
+
+# Define the data for Newbies table
+newbies_data=$(cat <<EOF
+(
+  'Christopher', 'Wilson', 'Seattle', 'King', '98101', '222-7777', '222-8888'
+),
+(
+  'Emma', 'Taylor', 'Boston', 'Suffolk', '02101', '333-9999', '333-0000'
+),
+(
+  'Daniel', 'Anderson', 'Dallas', 'Dallas', '75201', '444-1111', '444-2222'
+);
+EOF
+)
+
+# Run the SQL commands to insert data using mysql
+mysql -u "$DB_USER" -p"$DB_PASSWORD" -D "$DB_NAME" -e "INSERT INTO Trainers (first_name, last_name, city, county, zip, officePhone, mobilePhone) VALUES $trainers_data"
+mysql -u "$DB_USER" -p"$DB_PASSWORD" -D "$DB_NAME" -e "INSERT INTO Trainees (first_name, last_name, city, county, zip, officePhone, mobilePhone) VALUES $trainees_data"
+mysql -u "$DB_USER" -p"$DB_PASSWORD" -D "$DB_NAME" -e "INSERT INTO Newbies (first_name, last_name, city, county, zip, officePhone, mobilePhone) VALUES $newbies_data"
