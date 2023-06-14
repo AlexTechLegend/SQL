@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# MySQL database credentials
+DB_USER="adminalex"
+DB_PASSWORD="!QAZ@WSX1qaz2wsx"
+DB_NAME="Training"
+
+# Define the file path and delimiter
+DATA_FILE="data.txt"
+DELIMITER=","
+
+# Define the table name
+TABLE_NAME="Trainers"
+
+# Run the SQL command to insert data using mysql
+mysql -u "$DB_USER" -p"$DB_PASSWORD" -D "$DB_NAME" -e "LOAD DATA INFILE '$DATA_FILE' INTO TABLE $TABLE_NAME FIELDS TERMINATED BY '$DELIMITER' (first_name, last_name, city, county, zip, officePhone, mobilePhone);"
